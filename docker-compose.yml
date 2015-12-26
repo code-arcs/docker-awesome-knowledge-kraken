@@ -1,0 +1,9 @@
+api-gateway:
+    build: ./kraken-api-gateway
+    links:
+        - website-tentacle
+    ports:
+        - "80:80"
+website-tentacle:
+    build: ./kraken-website-tentacle
+   
