@@ -1,10 +1,18 @@
 #!/bin/bash
 
 copyResource() {
-    printf "Bundling %s" $1
-    rm -rf ./$1/bundle
-    cp -R ../$1/ ./$1/bundle
-    rm -rf ./$1/bundle/.git ./$1/bundle/.idea ./$1/bundle/node_modules
+    SOURCE=$1
+    TARGET=$2
+    
+    if [ -z $2 ]
+    then
+        TARGET=$1
+    fi 
+    
+    printf "Bundling %s...\n" $1
+    rm -rf ./$TARGET/bundle/*
+    cp -R ../$SOURCE/ ./$TARGET/bundle
+    rm -rf ./$TARGET/bundle/.git ./$TARGET/bundle/.idea ./$TARGET/bundle/node_modules
 }
-      
+
 copyResource kraken-website-tentacle
